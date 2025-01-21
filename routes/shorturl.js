@@ -1,13 +1,14 @@
 const { Router } = require('express');
+const dns = require('dns');
+const {
+  createShortURL,
+  getURLfromShortURL,
+} = require('../controllers/shorturl');
 
 const router = Router();
 
-router.post('/', (req, res, next) => {
-  console.log(req.body);
-});
+router.post('/shorturl', createShortURL);
 
-router.get('/', (req, res) => {
-  console.log('GET', req);
-});
+router.get('/shorturl/:short_url', getURLfromShortURL);
 
 module.exports = router;
